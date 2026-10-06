@@ -1,0 +1,19 @@
+{
+  "name": "ledger-postgres-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "database.hostname": "postgres",
+    "database.port": "5432",
+    "database.user": "debezium",
+    "database.password": "debezium",
+    "database.dbname": "pipeline_db",
+    "topic.prefix": "ledger",
+    "plugin.name": "pgoutput",
+    "slot.name": "ledger_debezium_slot",
+    "publication.name": "ledger_debezium_publication",
+    "publication.autocreate.mode": "filtered",
+    "table.include.list": "public.accounts,public.ledger_transactions",
+    "schema.history.internal.kafka.bootstrap.servers": "kafka:29092",
+    "schema.history.internal.kafka.topic": "schemahistory.ledger"
+  }
+}
