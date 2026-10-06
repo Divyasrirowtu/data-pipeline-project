@@ -147,7 +147,35 @@ services:
     volumes:
       - ./app:/app/app
       - ./tests:/app/tests
+  
+    cdc-processor:
+    build:
+      context: .
+      dockerfile: Dockerfile
 
+    container_name: pipeline-cdc-processor
+
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      CDC_INPUT_TOPIC: ledger.public.accounts
+      CDC_VALID_TOPIC: ledger.valid.events
+      CDC_DLQ_TOPIC: ledger.dlq
+
+    depends_on:
+      kafka:
+        condition: service_started
+      connect:
+        condition: service_started
+
+    command:
+      [
+        "python",
+        "-m",
+        "app.cdc.main"
+      ]
+
+    volumes:
+      - ./app:/app/app
 
 volumes:
   postgres_data:
