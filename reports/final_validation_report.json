@@ -1,0 +1,24 @@
+{
+    "project": "Data Pipeline Project",
+    "generated_at": "2026-10-08T21:03:26.746594",
+    "tests": {
+        "passed": false,
+        "output": ""
+    },
+    "required_files": {
+        "docker-compose.yml": true,
+        "Dockerfile": true,
+        "requirements.txt": true,
+        ".gitignore": true,
+        "db_init/01_schema.sql": true,
+        "db_init/02_debezium_user.sql": true,
+        "debezium-connector.json": true,
+        "app/cdc/consumer.py": true,
+        "app/cdc/processors/event_processor.py": true,
+        "app/cdc/validators/event_validator.py": true,
+        "app/business/processor.py": true,
+        "app/business/transaction_validator.py": true
+    },
+    "all_required_files_present": true,
+    "overall_status": "FAILED"
+}
